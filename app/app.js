@@ -11,38 +11,38 @@ angular.module('myApp', [
   'restangular'
 ])
     .config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
-        $routeProvider.otherwise({redirectTo: '/landing'});
+        $routeProvider.otherwise({redirectTo: '/'});
 
-        RestangularProvider.setBaseUrl('http://localhost:8001'); // or the purpose o user setup, this will run on localhost of their machine
+        RestangularProvider.setBaseUrl('http://localhost:8001'); // for the purpose of user setup, this will run on localhost of their machine
     }])
 
-    .controller('AppCtrl', function ($scope, user, $location, Restangular) {
-        if (sessionStorage.getItem('DjangoAuthToken')) {
-            var token = sessionStorage.getItem('DjangoAuthToken');
+    .controller('AppCtrl', function ($scope, User, $location, Restangular) {
+        if (sessionStorage.getItem(User.authToken)) {
+            var token = sessionStorage.getItem(User.authToken);
             Restangular.setDefaultHeaders({Authorization: 'Token ' + token});
-            user.getInfo().then(function () {
-                $scope.user = user.info;
-                $location.path('/landing');
+            User.getInfo().then(function () {
+                $scope.user = User.info;
+                $location.path('/');
             });
         }
 
-        if (user.info.id == '') {
-            $location.path('/landing');
+        if (User.info.id == '') {
+            $location.path('/');
         }
 
         $scope.logout = function () {
-            user.logout();
+            User.logout();
             $scope.user = null;
-            $location.path('/landing');
+            $location.path('/');
         };
 
         $scope.$on("user-updated", function () {
-            $scope.user = user.info;
+            $scope.user = User.info;
         });
         //Locks down all routes. This would require you to log in.
         $scope.$on('$routeChangeStart', function () {
-            if ((user.info != null && user.info.id == '') || user.info == null) {
-                $location.path('/landing');
+            if ((User.info != null && User.info.id == '') || User.info == null) {
+                $location.path('/');
             }
         });
 
