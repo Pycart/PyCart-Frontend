@@ -9,9 +9,8 @@ angular.module('myApp.itemDetail', ['ngRoute'])
         });
     }])
 
-    .controller('ItemDetailCtrl', ['$scope', '$http', '$routeParams', '$location', 'Restangular', function ($scope, $http, $routeParams, $location, Restangular) {
+    .controller('ItemDetailCtrl', ['$scope','$routeParams', 'Restangular', function ($scope, $routeParams, Restangular) {
         $scope.itemId = $routeParams.itemId;
-        $scope.editing = false;
         Restangular.one('items_detail', $scope.itemId).customGET().then(function (item) {
             $scope.item = item;
         });
