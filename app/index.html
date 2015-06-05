@@ -42,7 +42,8 @@
                         <button ng-click="search(searchTerm)" type="submit" class="btn btn-default">Submit</button>
                     </form>
                     <!--This is the place for Parentless tags to be displayed. It will outline the categories that will display in the menu bar-->
-                    <li><a ng-click='login()'>Login</a></li>
+                    <li ng-if="!user.email"><a ng-click='login()'>Login</a></li>
+                    <li ng-if="user.email"><a ng-click='logout()'>Logout</a></li>
                 </ul>
 
             </div>

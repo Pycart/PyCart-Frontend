@@ -38,6 +38,10 @@ angular.module('myApp', [
                 $location.path('/login/');
             };
 
+            $scope.logout = function() {
+                $location.path('/logout/');
+            };
+
             /////////////////////////////////////////////////////////////////////////////////
             // Still need a way to lock down routes.
             // Can figure this out later once we decide which routes would require login.
