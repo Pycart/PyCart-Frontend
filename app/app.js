@@ -9,6 +9,7 @@ angular.module('myApp', [
     'myApp.auth.logout',
     'myApp.itemList',
     'myApp.itemDetail',
+    'myApp.adminDashboard',
     'myApp.view1',
     'myApp.view2',
     'myApp.version',
