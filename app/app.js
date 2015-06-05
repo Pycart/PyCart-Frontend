@@ -2,52 +2,59 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-  'ngRoute',
-  'myApp.itemList',
-  'myApp.itemDetail',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version',
-  'restangular'
+
+    'ngRoute',
+    'myApp.auth',
+    'myApp.auth.login',
+    'myApp.auth.logout',
+    'myApp.itemList',
+    'myApp.itemDetail',
+    'myApp.view1',
+    'myApp.view2',
+    'myApp.version',
+    'restangular'
+
 ])
     .config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
-
         RestangularProvider.setBaseUrl('http://localhost:8001'); // for the purpose of user setup, this will run on localhost of their machine
+        RestangularProvider.setRequestSuffix('/');
     }])
 
-    .controller('AppCtrl', function ($scope, $location, Restangular) {
-        $scope.search = function(searchTerm) {
-            $location.path('/search/' + searchTerm);
-        };
+    .controller('AppCtrl', ['$scope', '$location', 'Restangular', 'UserService',
+        function ($scope, $location, Restangular, UserService) {
 
-        //if (sessionStorage.getItem(User.authToken)) {
-        //    var token = sessionStorage.getItem(User.authToken);
-        //    Restangular.setDefaultHeaders({Authorization: 'Token ' + token});
-        //    User.getInfo().then(function () {
-        //        $scope.user = User.info;
-        //        $location.path('/');
-        //    });
-        //}
-        //
-        //if (User.info.id == '') {
-        //    $location.path('/');
-        //}
-        //
-        //$scope.logout = function () {
-        //    User.logout();
-        //    $scope.user = null;
-        //    $location.path('/');
-        //};
-        //
-        //$scope.$on("user-updated", function () {
-        //    $scope.user = User.info;
-        //});
-        ////Locks down all routes. This would require you to log in.
-        //$scope.$on('$routeChangeStart', function () {
-        //    if ((User.info != null && User.info.id == '') || User.info == null) {
-        //        $location.path('/');
-        //    }
-        //});
-        //
-    });
+            $scope.search = function (searchTerm) {
+                $location.path('/search/' + searchTerm);
+            };
+
+            // Should only run the first time the page is loaded/refreshed.
+            var loaded = false;
+            if (!loaded) {
+                loaded = true;
+                var token = sessionStorage.getItem('token');
+                console.log("pre-userservice");
+                UserService.get();
+            }
+
+            $scope.login = function() {
+                $location.path('/login/');
+            };
+
+            $scope.logout = function() {
+                $location.path('/logout/');
+            };
+
+            /////////////////////////////////////////////////////////////////////////////////
+            // Still need a way to lock down routes.
+            // Can figure this out later once we decide which routes would require login.
+            //
+            ////Locks down all routes. This would require you to log in.
+            // $scope.$on('$routeChangeStart', function () {
+            //     if ((User.info != null && User.info.id == '') || User.info == null) {
+            //         $location.path('/');
+            //     }
+            // });
+            /////////////////////////////////////////////////////////////////////////////////
+
+        }]);
