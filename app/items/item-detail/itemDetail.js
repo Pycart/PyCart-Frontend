@@ -3,7 +3,7 @@
 angular.module('myApp.itemDetail', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/items_detail/:itemId', {
+        $routeProvider.when('/itemDetail/:itemId', {
             templateUrl: 'items/item-detail/item-detail.html',
             controller: 'ItemDetailCtrl'
         });
