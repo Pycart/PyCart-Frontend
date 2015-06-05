@@ -1,5 +1,6 @@
-<h3 ng-click="signup = true"> <a href="">Sign-up</a></h3><h3 ng-click="signup = false"><a href="">Login</a></h3>
 <div>
+    <h3 ng-show="!signup">Login</h3><p ng-show="!signup">Not a member? <a href="" ng-click="signup = true">Sign-up!</a></p>
+    <h3 ng-show="signup">Sign-up</h3><p ng-show="signup">Already a member? <a href="" ng-click="signup = false">Please Login.</a></p>
     <form name="signupForm" class="form" ng-submit="signup(registration)" novalidate ng-show="signup">
         <div class="form-group">
             <label for="first_name">First Name:</label> <input type="text"
