@@ -78,6 +78,17 @@ angular.module('myApp.auth', ['ngRoute']).
                 return error
             });
         };
+        authService.signup = function (registration) {
+            return Restangular.one('auth/register').customPOST(registration).then(function (data) {
+                var credentials = {
+                    'email' : registration.email,
+                    'password' : registration.password
+                };
+                return authService.login(credentials).then(function (data) {
+                    return data;
+                });
+            });
+        };
 
         return authService;
     }]);

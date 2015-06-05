@@ -29,8 +29,27 @@ angular.module('myApp.auth.login', ['ngRoute'])
                   $location.path('/');
               }
               $scope.resetLoginField();
-          }, function(data) {
+          }, function(data) {  //TODO: Alert that login has failed
               $scope.resetLoginField();
           });
+        };
+        $scope.signup = function (registration) {
+            if (registration.password1 === registration.password2) {
+                registration.password = registration.password1;
+                delete registration.password2;
+                delete registration.password1;
+
+                AuthFactory.signup(registration).then(function () {
+                    if ($scope.redirectLoginPath) {
+                        $location.path($scope.redirectLoginPath);
+                        $scope.redirectLoginPath = null;
+                    } else {
+                        $location.path('/');
+                    }
+                });
+            }
+            else {
+                //TODO: add a failure notice that says that user passwords do not match
+            }
         };
 }]);
