@@ -1,7 +1,7 @@
 <div>
-    <h3 ng-show="!signup">Login</h3><p ng-show="!signup">Not a member? <a href="" ng-click="signup = true">Sign-up!</a></p>
-    <h3 ng-show="signup">Sign-up</h3><p ng-show="signup">Already a member? <a href="" ng-click="signup = false">Please Login.</a></p>
-    <form name="signupForm" class="form" ng-submit="signup(registration)" novalidate ng-show="signup">
+    <h3 ng-show="signupForm">Login</h3><p ng-show="signupForm">Not a member? <a href="" ng-click="signupForm = !signupForm">Sign-up!</a></p>
+    <h3 ng-hide="signupForm">Sign-up</h3><p ng-hide="signupForm">Already a member? <a href="" ng-click="signupForm = !signupForm">Please Login.</a></p>
+    <form name="signupForm" class="form" ng-submit="signup(registration)" novalidate ng-hide="signupForm">
         <div class="form-group">
             <label for="first_name">First Name:</label> <input type="text"
                 class="form-control" id="first_name" ng-model="registration.first_name"/>
@@ -25,9 +25,7 @@
         <button type="submit" class="btn btn-info">Sign-up</button>
         <button type="button" class="btn btn-danger">Close</button>
     </form>
-</div>
-<div>
-    <form name="loginForm" class="form" ng-submit="submit(credentials)" novalidate ng-show="!signup">
+    <form name="loginForm" class="form" ng-submit="submit(credentials)" novalidate ng-show="signupForm">
         <div class="form-group">
             <label>Email</label>
             <input type="text" ng-model="credentials.email" class="form-control">
