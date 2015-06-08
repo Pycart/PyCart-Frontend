@@ -18,6 +18,8 @@ angular.module('myApp.auth.login', ['ngRoute'])
             };
         };
 
+        $scope.signupForm = false;
+
         $scope.resetLoginField();
 
         $scope.submit = function (credentials) {
@@ -33,6 +35,7 @@ angular.module('myApp.auth.login', ['ngRoute'])
               $scope.resetLoginField();
           });
         };
+
         $scope.signup = function (registration) {
             if (registration.password1 === registration.password2) {
                 registration.password = registration.password1;

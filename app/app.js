@@ -22,7 +22,7 @@ angular.module('myApp', [
         RestangularProvider.setRequestSuffix('/');
     }])
 
-    .controller('AppCtrl', ['$scope', '$location', 'Restangular', 'UserService',
+    .controller('AppCtrl', ['$scope', '$location', 'Restangular', 'UserService', 'RequireLogin',
         function ($scope, $location, Restangular, UserService) {
 
             $scope.search = function (searchTerm) {
