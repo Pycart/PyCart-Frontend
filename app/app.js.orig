@@ -2,6 +2,15 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
+<<<<<<< HEAD
+  'ngRoute',
+  'myApp.itemList',
+  'myApp.searchItems',
+  'myApp.itemDetail',
+  'myApp.view2',
+  'myApp.version',
+  'restangular'
+=======
 
     'ngRoute',
     'myApp.auth',
@@ -15,6 +24,7 @@ angular.module('myApp', [
     'myApp.version',
     'restangular'
 
+>>>>>>> dd2697617d57e57f13f294d814ea9afbbdb0924d
 ])
     .config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
