@@ -1,2 +1,3 @@
 <div ng-repeat="item in items"><a href="/app/#/itemDetail/{{ item.id }}">{{ item.name }}</a></div>
+<div ng-repeat="item in items"><a ng-click="openDetailModal($index)" href="">{{ item.name }}</a></div>
 <h3></h3>

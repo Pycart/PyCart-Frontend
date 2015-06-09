@@ -7,13 +7,14 @@ angular.module('myApp', [
     'myApp.auth',
     'myApp.auth.login',
     'myApp.auth.logout',
-    'myApp.itemList',
     'myApp.itemDetail',
+    'myApp.itemList',
     'myApp.adminDashboard',
     'myApp.view1',
     'myApp.view2',
     'myApp.version',
-    'restangular'
+    'restangular',
+    'ui.bootstrap'
 
 ])
     .config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
