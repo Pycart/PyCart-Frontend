@@ -44,6 +44,7 @@
                     <!--This is the place for Parentless tags to be displayed. It will outline the categories that will display in the menu bar-->
                     <li ng-if="!user.email"><a ng-click='login()'>Login</a></li>
                     <li ng-if="user.email"><a ng-click='logout()'>Logout</a></li>
+                    <li ng-if="user.is_staff"><a href="#/admin">Admin</a></li>
                 </ul>
 
             </div>
