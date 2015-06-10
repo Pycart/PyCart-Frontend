@@ -10,6 +10,7 @@ angular.module('myApp', [
     'myApp.itemList',
     'myApp.itemDetail',
     'myApp.adminDashboard',
+    'myApp.orderList',
     'myApp.view1',
     'myApp.view2',
     'myApp.version',
