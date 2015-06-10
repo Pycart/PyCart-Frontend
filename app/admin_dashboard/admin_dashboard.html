@@ -1,0 +1,36 @@
+<!--TODO: We will need to add a link to each ng-repeat item which would take the admin to a view to edit the selected item.-->
+
+<section class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <p>Item List</p>
+    <ul>
+        <li ng-repeat="result in ItemList.results">
+            <p>{{ result.name }}</p></li>
+    </ul>
+</section>
+
+<section>
+    <p>Option List</p>
+    <ul>
+        <li ng-repeat="result in OptionList.results">
+            <p>{{ result.name }}</p></li>
+    </ul>
+</section>
+
+<br>
+
+<section class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <p>Status List</p>
+    <ul>
+        <li ng-repeat="result in StatusList.results">
+            <p>{{ result.status }}</p></li>
+    </ul>
+</section>
+
+<!--TODO: This can be updated once order functionality is completed-->
+<section>
+    <p>Order List</p>
+    <!--<ul>-->
+        <!--<li ng-repeat="result in OrderList.results">-->
+            <!--<p>{{ result.order }}</p></li>-->
+    <!--</ul>-->
+</section>
