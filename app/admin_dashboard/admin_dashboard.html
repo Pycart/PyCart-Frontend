@@ -2,76 +2,100 @@
 
 <section class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <div ng-hide="showItemForm">
-            <p>Item List     <button ng-click="addItemForm()">Add New Item</button></p>
-                 <ul>
-                        <li ng-repeat="result in ItemList.results">
-                        <p>{{ result.name }}</p></li>
-                 </ul>
+        <p>Item List
+            <button ng-click="addItemForm()">Add New Item</button>
+        </p>
+        <ul>
+            <li ng-repeat="result in ItemList.results">
+                <p>{{ result.name }}</p></li>
+        </ul>
     </div>
     <div ng-show="showItemForm">
+        <h3>Create a New Item:</h3>
         <form name="Add_Item_Form" class="form">
-        <div class="form-group">
-            <label for="name">Item Name:</label> <input type="text"
-                class="form-control" id="name" ng-model="newItem.name"/>
-        </div>
-        <div class="form-group">
-            <label for="description">Description:</label> <input type="text"
-                class="form-control" id="description" ng-model="newItem.description"/>
-        </div>
-        <div class="form-group">
-            <label for="weight">Item Weight:</label> <input type="number" step="0.01" max="9999.99"
-                class="form-control" id="weight" min="0" ng-model="newItem.weight"/>
-        </div>
-        <div class="form-group">
-            <label for="tags">Item Tag:</label> <input type="text"
-                class="form-control" id="tags" ng-model="tagName"/>
-            <button ng-click="addTagToItem(tagName)">Add Tag</button>
-            <ol>
-                <li ng-repeat="tag in newItem.tags">{{ tag.name }}</li>
-            </ol>
-        </div>
-        <div class="form-group">
-            <label for="option">Options:</label> <input type="text"
-                class="form-control" id="option" ng-model="optionName"/>
-            <button ng-click="addOptionToItem(optionName)">Add Option</button>
-            <ol>
-                <li ng-repeat="option in newItem.options">{{ option.name }}</li>
-            </ol>
-        </div>
-        <div class="form-group">
-            <label for="price">Price:</label> <input type="number" step="0.01" max="9999.99"
-                class="form-control" id="price" ng-model="newItem.price"/>
-        </div>
-        <button ng-click="addItem(newItem)" class="btn btn-info">Add New Item</button>
-        <button class="btn btn-danger">Clear</button>
-    </form>
-
+            <div class="form-group">
+                <label for="name">Item Name:</label>
+                <input type="text" class="form-control" id="name" ng-model="newItem.name"/>
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <input type="text" class="form-control" id="description" ng-model="newItem.description"/>
+            </div>
+            <div class="form-group">
+                <label for="weight">Item Weight:</label>
+                <input type="number" step="0.01" max="9999.99" class="form-control" id="weight" min="0" ng-model="newItem.weight"/>
+            </div>
+            <div class="form-group">
+                <label for="tags">Item Tag:</label>
+                <input type="text" class="form-control" id="tags" ng-model="tagName"/>
+                <button ng-click="addTagToItem(tagName)">Add Tag</button>
+                <ol>
+                    <li ng-repeat="tag in newItem.tags">{{ tag.name }}</li>
+                </ol>
+            </div>
+            <div class="form-group">
+                <label for="option">Options:</label>
+                <input type="text" class="form-control" id="option" ng-model="optionName"/>
+                <button ng-click="addOptionToItem(optionName)">Add Option</button>
+                <ol>
+                    <li ng-repeat="option in newItem.options">{{ option.name }}</li>
+                </ol>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" step="0.01" max="9999.99" class="form-control" id="price" ng-model="newItem.price"/>
+            </div>
+            <button ng-click="addItem(newItem)" class="btn btn-info">Add New Item</button>
+            <button ng-click="clearItem(newItem)"class="btn btn-warning">Clear</button>
+            <button ng-click="cancelItem(newItem)"class="btn btn-danger">Cancel</button>
+        </form>
     </div>
-</section>
-
-<section>
-    <p>Option List   <button ng-click="addOption()">Add New Option</button></p>
-    <ul>
-        <li ng-repeat="result in OptionList.results">
-            <p>{{ result.name }}</p></li>
-    </ul>
+    <br>
+    <br>
+    <div ng-hide="showOptionForm">
+        <p>Option List
+            <button ng-click="addOptionForm()">Add New Option</button>
+        </p>
+        <ul>
+            <li ng-repeat="result in OptionList.results">
+                <p>{{ result.name }}</p></li>
+        </ul>
+    </div>
+    <div ng-show="showOptionForm">
+        <h3>Create a New Option:</h3>
+        <form name="Add_Option_Form" class="form">
+            <div class="form-group">
+                <label for="name">Option Name:</label>
+                <input type="text" class="form-control" id="option-name" ng-model="option.name"/>
+            </div>
+            <button ng-click="addOption(option)" class="btn btn-info">Add New Option</button>
+            <button ng-click="cancelOption(option)" class="btn btn-danger">Cancel</button>
+        </form>
+    </div>
 </section>
 
 <br>
 
 <section class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <p>Status List    <button ng-click="editStatus()">Edit Status</button></p>
-    <ul>
-        <li ng-repeat="result in StatusList.results">
-            <p>{{ result.status }}</p></li>
-    </ul>
-</section>
-
-<!--TODO: This can be updated once order functionality is completed-->
-<section>
-    <p>Order List    <button ng-click="editOrder()">Edit Order</button></p>
-    <!--<ul>-->
+    <!--TODO: This can be updated once order functionality is completed-->
+    <div>
+        <p>Order List
+            <button ng-click="editOrder()">Edit Order</button>
+        </p>
+        <!--<ul>-->
         <!--<li ng-repeat="result in OrderList.results">-->
-            <!--<p>{{ result.order }}</p></li>-->
-    <!--</ul>-->
+        <!--<p>{{ result.order }}</p></li>-->
+        <!--</ul>-->
+    </div>
+    <br>
+    <br>
+    <div>
+        <p>Status List
+            <button ng-click="editStatus()">Edit Status</button>
+        </p>
+        <ul>
+            <li ng-repeat="result in StatusList.results">
+                <p>{{ result.status }}</p></li>
+        </ul>
+    </div>
 </section>
