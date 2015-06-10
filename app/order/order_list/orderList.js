@@ -1,6 +1,3 @@
-/**
- * Created by mosassy on 6/10/15.
- */
 
 angular.module('myApp.orderList', ['ngRoute'])
 
