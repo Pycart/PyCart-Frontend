@@ -23,7 +23,8 @@
             </div>
             <div class="form-group">
                 <label for="weight">Item Weight:</label>
-                <input type="number" step="0.01" max="9999.99" class="form-control" id="weight" min="0" ng-model="newItem.weight"/>
+                <input type="number" step="0.01" max="9999.99" class="form-control" id="weight" min="0"
+                       ng-model="newItem.weight"/>
             </div>
             <div class="form-group">
                 <label for="tags">Item Tag:</label>
@@ -35,7 +36,9 @@
             </div>
             <div class="form-group">
                 <label for="option">Options:</label>
-                <input type="text" class="form-control" id="option" ng-model="optionName"/>
+                <!--<pre>Model: {{result | json}}</pre>-->
+                <input type="text" class="form-control" id="option" ng-model="result"
+                       typeahead="options for option in options($viewValue)"/>
                 <button ng-click="addOptionToItem(optionName)">Add Option</button>
                 <ol>
                     <li ng-repeat="option in newItem.options">{{ option.name }}</li>
@@ -43,7 +46,8 @@
             </div>
             <div class="form-group">
                 <label for="price">Price:</label>
-                <input type="number" step="0.01" max="9999.99" class="form-control" id="price" ng-model="newItem.price"/>
+                <input type="number" step="0.01" max="9999.99" class="form-control" id="price"
+                       ng-model="newItem.price"/>
             </div>
             <button ng-click="addItem(newItem)" class="btn btn-info">Add New Item</button>
             <button ng-click="clearItem(newItem)"class="btn btn-warning">Clear</button>
@@ -66,7 +70,9 @@
         <form name="Add_Option_Form" class="form">
             <div class="form-group">
                 <label for="name">Option Name:</label>
-                <input type="text" class="form-control" id="option-name" ng-model="option.name"/>
+                <input type="text" class="form-control" id="option-name" ng-model="option.name"
+                       typeahead="option.name for option in options($viewValue)| filter:$viewValue:startsWith"/>
+                <button ng-click="addOptionToItem(optionName)">Add Option</button>
             </div>
             <button ng-click="addOption(option)" class="btn btn-info">Add New Option</button>
             <button ng-click="cancelOption(option)" class="btn btn-danger">Cancel</button>
