@@ -1,0 +1,11 @@
+<div>
+ <h2>Order History</h2>
+</div>
+<div ng-repeat="order in orders">
+
+    <a href="">{{order.date_placed | date: format: longDate}}</a>
+    <ul ng-repeat="item in order.items" style="list-style: none;">
+        <li> {{item.name}}</li>
+    </ul>
+
+</div>
