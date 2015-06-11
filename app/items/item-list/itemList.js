@@ -12,7 +12,7 @@ angular.module('myApp.itemList', ['ngRoute'])
         });
     }])
 
-    .controller('ItemListCtrl', ['$scope', '$routeParams', 'Restangular', function ($scope, $routeParams, Restangular) {
+    .controller('ItemListCtrl', ['$scope', '$routeParams', 'Restangular', 'ItemDetailModal', function ($scope, $routeParams, Restangular, ItemDetailModal) {
 
         if ($routeParams.searchTerm) {
             $scope.searchTerm = $routeParams.searchTerm;
@@ -24,4 +24,9 @@ angular.module('myApp.itemList', ['ngRoute'])
                 $scope.items = data.results;
             });
         }
+
+        $scope.openDetailModal = function (idx) {
+            ItemDetailModal.open($scope.items[idx]);
+        };
+
     }]);
