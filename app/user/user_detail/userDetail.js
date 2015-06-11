@@ -12,4 +12,10 @@ angular.module('myApp.userDetail', ['ngRoute'])
         Restangular.one('user_dashboard', $scope.userId).customGET().then(function(user) {
             $scope.user = user;
         });
+
+        $scope.updateUser = function () {
+            Restangular.one('user_dashboard', $scope.userId).customPOST($scope.user).then(function(user) {
+                $scope.updateUser = user;
+            })
+        }
     }]);
