@@ -1,0 +1,11 @@
+<h1 ng-app="myApp.orderDetail" ng-controller="OrderDetailCtrl">{{ order.id }}</h1>
+
+<div>
+    <p>{{ order.date_placed }}</p>
+    <p>{{ order.user }}</p>
+    <p>{{ order._total_price }}</p>
+    <p>{{ order._current_status }}</p>
+    <div ng-repeat="item in order.items track by $index">
+        {{item}}
+    </div>
+</div>
