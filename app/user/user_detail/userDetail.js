@@ -13,9 +13,20 @@ angular.module('myApp.userDetail', ['ngRoute'])
             $scope.user = user;
         });
 
+        $scope.form = false;
+        $scope.editUser = function () {
+            $scope.form = true;
+        };
+
+        $scope.cancelEdit = function () {
+            $scope.form = false;
+        };
+
+
         $scope.updateUser = function () {
-            Restangular.one('user_dashboard', $scope.userId).customPOST($scope.user).then(function(user) {
-                $scope.updateUser = user;
+            Restangular.one('user_dashboard', $scope.userId).customPUT($scope.user).then(function(user) {
+                $scope.user = user;
+                $scope.form = false;
             })
         }
     }]);

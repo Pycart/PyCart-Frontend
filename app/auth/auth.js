@@ -1,6 +1,7 @@
 angular.module('myApp.auth', ['ngRoute']).
     service('UserService', ['$rootScope', 'Restangular', function ($rootScope, Restangular) {
-        this.create = function (email, first_name, last_name, is_staff) {
+        this.create = function (id, email, first_name, last_name, is_staff) {
+            this.id = id;
             this.email = email;
             this.first_name = first_name;
             this.last_name = last_name;
@@ -8,6 +9,7 @@ angular.module('myApp.auth', ['ngRoute']).
         };
 
         this.destroy = function () {
+            this.id = null;
             this.email = null;
             this.first_name = null;
             this.last_name = null;
@@ -16,6 +18,7 @@ angular.module('myApp.auth', ['ngRoute']).
 
         this.get = function () {
             $rootScope.user = {
+                'id' : this.id,
                 'email': this.email,
                 'first_name': this.first_name,
                 'last_name': this.last_name,
@@ -25,8 +28,8 @@ angular.module('myApp.auth', ['ngRoute']).
         }
     }
     ]).
-    factory('AuthFactory', ['$http', 'UserService', 'Restangular', function
-        ($http, UserService, Restangular) {
+    factory('AuthFactory', ['$http', 'UserService', 'Restangular', '$rootScope', function
+        ($http, UserService, Restangular, $rootScope) {
 
         /*
          This is the base authentication service. This will reach out to the backend and do the authentication.
@@ -46,8 +49,9 @@ angular.module('myApp.auth', ['ngRoute']).
                     sessionStorage.setItem('token', key.auth_token);
 
                     // Create session.
-                    UserService.create(data.email, data.first_name, data.last_name, data.is_staff);
+                    UserService.create(data.id, data.email, data.first_name, data.last_name, data.is_staff);
                     UserService.get();
+                    $rootScope.$broadcast('user-updated');
                     return data;
                 });
 
@@ -106,8 +110,9 @@ angular.module('myApp.auth', ['ngRoute']).
             if (token) {
                 Restangular.configuration.defaultHeaders.authorization = 'Token ' + token;
                 Restangular.all('auth/me').customGET().then(function (data) {
-                    UserService.create(data.email, data.first_name, data.last_name, data.is_staff);
+                    UserService.create(data.id, data.email, data.first_name, data.last_name, data.is_staff);
                     UserService.get();
+                    $rootScope.$broadcast('user-updated');
 
                     if (regex.test(path) && $rootScope.user.is_staff === false) {
                         $location.path('/login');

@@ -41,12 +41,17 @@ angular.module('myApp', [
                 UserService.get();
             }
 
+            $scope.$on('user-updated', function () {
+                $scope.user = UserService;
+            });
+
             $scope.login = function() {
                 $location.path('/login/');
             };
 
             $scope.logout = function() {
                 $location.path('/logout/');
+                $scope.user = null;
             };
 
             /////////////////////////////////////////////////////////////////////////////////
