@@ -12,6 +12,7 @@ angular.module('myApp', [
     'myApp.adminDashboard',
     'myApp.orderList',
     'myApp.userList',
+    'myApp.userDetail',
     'myApp.view1',
     'myApp.view2',
     'myApp.version',
@@ -40,12 +41,17 @@ angular.module('myApp', [
                 UserService.get();
             }
 
+            $scope.$on('user-updated', function () {
+                $scope.user = UserService;
+            });
+
             $scope.login = function() {
                 $location.path('/login/');
             };
 
             $scope.logout = function() {
                 $location.path('/logout/');
+                $scope.user = null;
             };
 
             /////////////////////////////////////////////////////////////////////////////////

@@ -45,6 +45,7 @@
                     <li ng-if="!user.email"><a ng-click='login()'>Login</a></li>
                     <li ng-if="user.email"><a ng-click='logout()'>Logout</a></li>
                     <li ng-if="user.is_staff"><a href="#/admin">Admin</a></li>
+                    <li ng-if="user.email"><a href="#/userDetail/{{ user.id }}">User Info</a></li>
                 </ul>
 
             </div>
@@ -84,6 +85,8 @@
     <script src="items/item-detail/itemDetail.js"></script>
     <script src="order/order_list/orderList.js"></script>
     <script src="user/user_list/userList.js"></script>
+    <script src="user/user_detail/userDetail.js"></script>
+    <script src="order/order_list/orderList.js"></script>
     <script src="view1/view1.js"></script>
     <script src="view2/view2.js"></script>
     <script src="components/version/version.js"></script>

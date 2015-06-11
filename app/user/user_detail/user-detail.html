@@ -1,0 +1,24 @@
+
+<div ng-hide="form">
+    <p>{{ user.email }}</p>
+    <p>{{ user.first_name }}</p>
+    <p>{{ user.last_name }}</p>
+    <button ng-click="editUser()">Edit User Info</button>
+
+</div>
+
+<div ng-show="form">
+    <form>
+        Email:<br>
+        <input ng-model="user.email" type="email" name="email" value="{{ user.email }}">
+        <br>
+        First name:<br>
+        <input ng-model="user.first_name" type="text" name="firstname" value="{{ user.first_name }}">
+        <br>
+        Last name:<br>
+        <input ng-model="user.last_name" type="text" name="lastname" value="{{ user.last_name }}">
+        <br><br>
+        <input type="submit" value="Submit" ng-click="updateUser()">
+        <button ng-click="cancelEdit()">Cancel</button>
+    </form>
+</div>
