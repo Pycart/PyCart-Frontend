@@ -17,7 +17,9 @@ angular.module('myApp', [
     'myApp.view2',
     'myApp.version',
     'restangular',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'myApp.saveCardsDetail',
+    'myApp.saveCardsList'
 ])
     .config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
