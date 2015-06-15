@@ -18,7 +18,8 @@ angular.module('myApp', [
     'myApp.view2',
     'myApp.version',
     'restangular',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'myApp.stock_records_view',
 ])
     .config(['$routeProvider', 'RestangularProvider', function ($routeProvider, RestangularProvider) {
         $routeProvider.otherwise({redirectTo: '/'});
