@@ -70,8 +70,8 @@
         <form name="Add_Option_Form" class="form">
             <div class="form-group">
                 <label for="name">Option Name:</label>
-                <input type="text" class="form-control" id="option-name" ng-model="option.name"
-                       typeahead="optionName for option in options($viewValue)| filter:$viewValue:startsWith"/>
+                <input type="text" class="form-control" id="option-name" ng-model="optionName"
+                       typeahead="option.name for option in OptionList.results | filter:$viewValue | limitTo: 10"/>
                 <button ng-click="addOptionToItem(optionName)">Add Option</button>
             </div>
             <button ng-click="addOption(option)" class="btn btn-info">Add New Option</button>
