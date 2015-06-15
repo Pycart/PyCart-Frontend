@@ -71,7 +71,7 @@
             <div class="form-group">
                 <label for="name">Option Name:</label>
                 <input type="text" class="form-control" id="option-name" ng-model="option.name"
-                       typeahead="option.name for option in options($viewValue)| filter:$viewValue:startsWith"/>
+                       typeahead="optionName for option in options($viewValue)| filter:$viewValue:startsWith"/>
                 <button ng-click="addOptionToItem(optionName)">Add Option</button>
             </div>
             <button ng-click="addOption(option)" class="btn btn-info">Add New Option</button>

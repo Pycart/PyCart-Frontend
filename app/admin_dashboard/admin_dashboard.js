@@ -101,7 +101,7 @@ angular.module('myApp.adminDashboard', ['ngRoute', 'ui.bootstrap'])
         //}
         $scope.options = function (optionName) {
             console.log(optionName);
-            Restangular.all('admin_dashboard/options/').customGET(optionName).then(function (data) {
+            Restangular.all('admin_dashboard/options').customGET(optionName).then(function (data) {
                 $scope.optionName = data;
             //return $http.jsonp("" + optionName).then(function (response) {
             //    return limitToFilter(response.data, 15);
