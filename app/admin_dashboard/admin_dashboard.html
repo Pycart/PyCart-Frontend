@@ -27,27 +27,18 @@
                        ng-model="newItem.weight"/>
             </div>
             <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" step="0.01" max="9999.99" class="form-control" id="price"
+                       ng-model="newItem.price"/>
+            </div>
+            <div class="form-group">
                 <label for="tags">Item Tag:</label>
-                <input type="text" class="form-control" id="tags" ng-model="tagName"/>
+                <input type="text" class="form-control" id="tags" ng-model="tagName"
+                       typeahead="item.name for item in ItemList.results | filter:$viewValue | limitTo: 10"/>
                 <button ng-click="addTagToItem(tagName)">Add Tag</button>
                 <ol>
                     <li ng-repeat="tag in newItem.tags">{{ tag.name }}</li>
                 </ol>
-            </div>
-            <div class="form-group">
-                <label for="option">Options:</label>
-                <!--<pre>Model: {{result | json}}</pre>-->
-                <input type="text" class="form-control" id="option" ng-model="result"
-                       typeahead="options for option in options($viewValue)"/>
-                <button ng-click="addOptionToItem(optionName)">Add Option</button>
-                <ol>
-                    <li ng-repeat="option in newItem.options">{{ option.name }}</li>
-                </ol>
-            </div>
-            <div class="form-group">
-                <label for="price">Price:</label>
-                <input type="number" step="0.01" max="9999.99" class="form-control" id="price"
-                       ng-model="newItem.price"/>
             </div>
             <button ng-click="addItem(newItem)" class="btn btn-info">Add New Item</button>
             <button ng-click="clearItem(newItem)"class="btn btn-warning">Clear</button>
@@ -56,28 +47,28 @@
     </div>
     <br>
     <br>
-    <div ng-hide="showOptionForm">
-        <p>Option List
-            <button ng-click="addOptionForm()">Add New Option</button>
-        </p>
-        <ul>
-            <li ng-repeat="result in OptionList.results">
-                <p>{{ result.name }}</p></li>
-        </ul>
-    </div>
-    <div ng-show="showOptionForm">
-        <h3>Create a New Option:</h3>
-        <form name="Add_Option_Form" class="form">
-            <div class="form-group">
-                <label for="name">Option Name:</label>
-                <input type="text" class="form-control" id="option-name" ng-model="option.name"
-                       typeahead="option.name for option in options($viewValue)| filter:$viewValue:startsWith"/>
-                <button ng-click="addOptionToItem(optionName)">Add Option</button>
-            </div>
-            <button ng-click="addOption(option)" class="btn btn-info">Add New Option</button>
-            <button ng-click="cancelOption(option)" class="btn btn-danger">Cancel</button>
-        </form>
-    </div>
+    <!--<div ng-hide="showOptionForm">-->
+        <!--<p>Option List-->
+            <!--<button ng-click="addOptionForm()">Add New Option</button>-->
+        <!--</p>-->
+        <!--<ul>-->
+            <!--<li ng-repeat="result in OptionList.results">-->
+                <!--<p>{{ result.name }}</p></li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<div ng-show="showOptionForm">-->
+        <!--<h3>Create a New Option:</h3>-->
+        <!--<form name="Add_Option_Form" class="form">-->
+            <!--<div class="form-group">-->
+                <!--<label for="new-option-name">Option Name:</label>-->
+                <!--<input type="text" class="form-control" id="new-option-name" ng-model="optionName"-->
+                       <!--typeahead="option.name for option in OptionList.results | filter:$viewValue | limitTo: 10"/>-->
+                <!--<button ng-click="addOptionToItem(optionName)">Add Option</button>-->
+            <!--</div>-->
+            <!--<button ng-click="addOption(option)" class="btn btn-info">Add New Option</button>-->
+            <!--<button ng-click="cancelOption(option)" class="btn btn-danger">Cancel</button>-->
+        <!--</form>-->
+    <!--</div>-->
 </section>
 
 <br>
