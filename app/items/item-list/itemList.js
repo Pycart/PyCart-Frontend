@@ -28,7 +28,7 @@ angular.module('myApp.itemList', ['ngRoute'])
         }
 
         $scope.openDetailModal = function (idx) {
-            ItemDetailModal.open($scope.items[idx-1]);
+            ItemDetailModal.open($scope.items[idx]);
         };
 
     }]);
