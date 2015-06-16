@@ -14,6 +14,8 @@ angular.module('myApp.itemList', ['ngRoute'])
 
     .controller('ItemListCtrl', ['$scope', '$routeParams', 'Restangular', 'ItemDetailModal', function ($scope, $routeParams, Restangular, ItemDetailModal) {
 
+        $scope.itemId = $routeParams.itemId;
+
         if ($routeParams.searchTerm) {
             $scope.searchTerm = $routeParams.searchTerm;
             Restangular.all('items_search/?search=' + $scope.searchTerm).customGET().then(function (data) {

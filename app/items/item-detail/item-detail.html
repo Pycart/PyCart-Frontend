@@ -1,11 +1,11 @@
-<h1 ng-app="myApp.itemDetail" ng-controller="ItemDetailCtrl">{{ item.name }}</h1>
-
 <div>
-    <p>{{ item.description }}</p>
-    <p>{{ item.weight }}</p>
-    <p>{{ item.price }}</p>
-    <p>{{ item.option.name }}</p>
-    <div ng-repeat="tag in item.tags track by $index">
-        {{tag}}
-    </div>
+    <h1 style="text-align: center; text-decoration: underline">{{ item.name }}</h1>
+    <h1>Description: {{ item.description }}</h1>
+    <h1>Price: ${{ item.price }}</h1>
+    <h1>Weight: {{ item.weight }} lbs</h1>
+    <!--Placeholder for the image-->
+    <h1 ng-repeat="tag in item.tags track by $index">{{tag}}</h1>
+</div>
+<div>
+    <button>Add this to my cart!</button>
 </div>
