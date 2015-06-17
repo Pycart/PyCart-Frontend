@@ -18,17 +18,17 @@ angular.module('myApp.itemList', ['ngRoute'])
 
         if ($routeParams.searchTerm) {
             $scope.searchTerm = $routeParams.searchTerm;
-            Restangular.all('items_search/?search=' + $scope.searchTerm).customGET().then(function (data) {
+            Restangular.all('items/search/?search=' + $scope.searchTerm).customGET().then(function (data) {
                 $scope.items = data.results;
             });
         } else {
-            Restangular.all('items_list/').customGET().then(function (data) {
+            Restangular.all('items/').customGET().then(function (data) {
                 $scope.items = data.results;
             });
         }
 
         $scope.openDetailModal = function (idx) {
-            ItemDetailModal.open($scope.items[idx]);
+            ItemDetailModal.open($scope.items[idx]['id']);
         };
 
     }]);
