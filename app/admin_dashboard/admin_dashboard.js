@@ -10,8 +10,10 @@ angular.module('myApp.adminDashboard', ['ngRoute', 'ui.bootstrap'])
     }])
 
     .controller('AdminDashboardCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
+        Restangular.all('admin_dashboard/shop_user_list').customGET().then(function (data) {
+            $scope.users = data.results;
+        });
         $scope.newItem = {
-            //options: [],
             tags: []
         };
         $scope.GetItemList = function () {

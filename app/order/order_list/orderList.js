@@ -11,7 +11,7 @@ angular.module('myApp.orderList', ['ngRoute'])
     .controller('OrderListCtrl', ['$scope', 'Restangular', function($scope, Restangular){
 
         // what should be passed to Restangular.all ??
-        Restangular.all('allOrdersList').customGET().then(function (data){
+        Restangular.all('user/orders').customGET().then(function (data){
             $scope.orders = data.results;
         });
     }

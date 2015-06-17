@@ -12,7 +12,6 @@ angular.module('myApp', [
     'myApp.orderDetail',
     'myApp.adminDashboard',
     'myApp.orderList',
-    'myApp.userList',
     'myApp.userDetail',
     'myApp.view1',
     'myApp.view2',

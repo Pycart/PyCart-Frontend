@@ -11,7 +11,7 @@ angular.module('myApp.orderDetail', ['ngRoute'])
 
     .controller('OrderDetailCtrl', ['$scope','$routeParams', 'Restangular', function ($scope, $routeParams, Restangular) {
         $scope.orderId = $routeParams.orderId;
-        Restangular.one('order_detail', $scope.orderId).customGET().then(function (order) {
+        Restangular.one('user/orders', $scope.orderId).customGET().then(function (order) {
             $scope.order = order;
         });
     }]);

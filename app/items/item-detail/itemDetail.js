@@ -9,7 +9,7 @@ angular.module('myApp.itemDetail', ['ngRoute', 'ui.bootstrap'])
                     templateUrl: 'items/item-detail/item-detail.html',
                     controller: 'ItemDetailModalCtrl',
                     resolve: {
-                        itm: function () {
+                        item: function () {
                             return item;
                         }
                     }
@@ -18,13 +18,17 @@ angular.module('myApp.itemDetail', ['ngRoute', 'ui.bootstrap'])
         };
     }])
 
-    .controller('ItemDetailModalCtrl', ['$scope', 'itm', 'Restangular', function ($scope, itm, Restangular) {
-        $scope.item = itm;
+    .controller('ItemDetailModalCtrl', ['$scope', 'item', 'Restangular', function ($scope, item, Restangular) {
+
+        console.log(item);
+        Restangular.one('items/', item).customGET().then(function (data) {
+            $scope.item = data;
+        });
 
         //A Quantity of 0 here will effectively delete the item from your current order.
         //Also, if the user is not logged in, they won't be able to add items to an order.
         $scope.addItem = function (item, quantity) {
-            Restangular.one('add_to_cart/').customPUT({"items":[item.id], "quantity":[quantity]}).then(function () {
+            Restangular.one('cart/add/').customPUT({"items":[item.id], "quantity":[quantity]}).then(function () {
                 alert("Item added to cart!");
             }, function (error) {
                 alert("There was an error adding your item"); //TODO add a decent error alert here too
