@@ -12,6 +12,7 @@ angular.module('myApp.adminDashboard', ['ngRoute', 'ui.bootstrap'])
     .controller('AdminDashboardCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
         Restangular.all('admin_dashboard/shop_user_list').customGET().then(function (data) {
             $scope.users = data.results;
+            $scope.displayUsers = false;
         });
         $scope.newItem = {
             tags: []
@@ -28,6 +29,9 @@ angular.module('myApp.adminDashboard', ['ngRoute', 'ui.bootstrap'])
         };
         $scope.GetItemList();
         $scope.GetStatusList();
+        $scope.showUsers = function () {
+            $scope.displayUsers = !$scope.displayUsers;
+        };
         $scope.addItemForm = function () {
             $scope.showItemForm = true;
         };

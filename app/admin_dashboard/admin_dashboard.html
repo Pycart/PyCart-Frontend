@@ -12,6 +12,7 @@
     </div>
     <div ng-show="showItemForm">
         <h3>Create a New Item:</h3>
+
         <form name="Add_Item_Form" class="form">
             <div class="form-group">
                 <label for="name">Item Name:</label>
@@ -41,34 +42,12 @@
                 </ol>
             </div>
             <button ng-click="addItem(newItem)" class="btn btn-info">Add New Item</button>
-            <button ng-click="clearItem(newItem)"class="btn btn-warning">Clear</button>
-            <button ng-click="cancelItem(newItem)"class="btn btn-danger">Cancel</button>
+            <button ng-click="clearItem(newItem)" class="btn btn-warning">Clear</button>
+            <button ng-click="cancelItem(newItem)" class="btn btn-danger">Cancel</button>
         </form>
     </div>
     <br>
     <br>
-    <!--<div ng-hide="showOptionForm">-->
-        <!--<p>Option List-->
-            <!--<button ng-click="addOptionForm()">Add New Option</button>-->
-        <!--</p>-->
-        <!--<ul>-->
-            <!--<li ng-repeat="result in OptionList.results">-->
-                <!--<p>{{ result.name }}</p></li>-->
-        <!--</ul>-->
-    <!--</div>-->
-    <!--<div ng-show="showOptionForm">-->
-        <!--<h3>Create a New Option:</h3>-->
-        <!--<form name="Add_Option_Form" class="form">-->
-            <!--<div class="form-group">-->
-                <!--<label for="new-option-name">Option Name:</label>-->
-                <!--<input type="text" class="form-control" id="new-option-name" ng-model="optionName"-->
-                       <!--typeahead="option.name for option in OptionList.results | filter:$viewValue | limitTo: 10"/>-->
-                <!--<button ng-click="addOptionToItem(optionName)">Add Option</button>-->
-            <!--</div>-->
-            <!--<button ng-click="addOption(option)" class="btn btn-info">Add New Option</button>-->
-            <!--<button ng-click="cancelOption(option)" class="btn btn-danger">Cancel</button>-->
-        <!--</form>-->
-    <!--</div>-->
 </section>
 
 <br>
@@ -95,12 +74,18 @@
                 <p>{{ result.status }}</p></li>
         </ul>
     </div>
-    <div>
-    <h2>User List</h2>
+    <br>
+    <br>
+    <div ng-hide="displayUsers">
+        <p>User List
+            <button ng-click="showUsers()">Show Current Users</button>
+        </p>
     </div>
-    <div ng-repeat="user in users">
-
-        <p>{{user.email}}</p>
-
+    <div ng-show="displayUsers">
+        <p>User List
+            <button ng-click="showUsers()">Hide Current Users</button>
+        </p>
+        <li ng-repeat="user in users">
+            <p>{{user.email}}</p></li>
     </div>
 </section>
