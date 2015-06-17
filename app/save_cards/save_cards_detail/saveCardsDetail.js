@@ -13,4 +13,4 @@ angular.module('myApp.saveCardsDetail', ['ngRoute'])
             $scope.saved_card = saved_card;
         });
 
-    }]);Save
+    }]);
