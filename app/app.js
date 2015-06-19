@@ -4,6 +4,8 @@
 angular.module('myApp', [
 
     'ngRoute',
+    'myApp.cart',
+    'myApp.orders.checkout',
     'myApp.auth',
     'myApp.auth.login',
     'myApp.auth.logout',

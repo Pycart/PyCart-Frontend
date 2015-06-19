@@ -9,6 +9,6 @@
     <div ng-repeat="tag in item.tags track by $index">
         {{tag}}
     </div>
-    <input ng-model="quantity" class="form-control" placeholder="Quantity" type="number" min="0" name="quantity"/>
+    <input ng-model="quantity" class="form-control" placeholder="Quantity" type="number" min="1" name="quantity"/>
     <button ng-click="addItem(item, quantity)" class="btn btn-info">Add {{ item.name }} to Cart</button>
 </div>

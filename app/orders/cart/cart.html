@@ -1,0 +1,20 @@
+<div>
+    <ul>
+        <li ng-repeat="item in cart.items">
+            <div>
+                {{ item.name }}
+            </div>
+            <div>
+                ${{ item.price }}
+            </div>
+            <div>
+                <label>Quantity</label>
+                <input type="number" max="5000" ng-model="item.quantity" ng-change="updateItem(item.id, item.quantity)">
+            </div>
+            <button class="btn btn-xs btn-danger" ng-click="removeItem(item.id)">Remove</button>
+        </li>
+    </ul>
+    <label>Total:</label>{{ cart.total_price }}
+    <br>
+    <button class="btn btn-xs btn-success" ng-click="checkout()">Checkout</button>
+</div>
