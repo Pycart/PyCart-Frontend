@@ -2,9 +2,9 @@
 
 angular.module('myApp.item', ['ngRoute'])
 
-.service('Item', [ '$scope', '$http', 'BaseUrl', function ($scope, $http, BaseUrl) {
+.service('Item', ['$http', 'BaseUrl', function ($http, BaseUrl) {
 		this.getList = function () {
-			return $http.get(BaseURL + this.urls.items_list)
+			return $http.get(BaseUrl + this.urls.items_list)
 		};
 
 		this.getOne = function (item) {
