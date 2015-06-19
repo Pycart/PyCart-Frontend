@@ -3,7 +3,7 @@ angular.module('myApp.orderList', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/orderList', {
-            templateUrl: 'order/order_list/order-list.html',
+            templateUrl: 'orders/order_list/order-list.html',
             controller: 'OrderListCtrl'
         });
     }])

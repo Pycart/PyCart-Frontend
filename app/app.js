@@ -12,8 +12,6 @@ angular.module('myApp', [
     'myApp.adminDashboard',
     'myApp.orderList',
     'myApp.userDetail',
-    'myApp.view1',
-    'myApp.view2',
     'myApp.version',
     'restangular',
     'ui.bootstrap',
