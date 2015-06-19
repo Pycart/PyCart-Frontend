@@ -12,22 +12,22 @@ angular.module('myApp.item')
         });
     }])
 
-    .controller('ItemListCtrl', ['$scope', '$routeParams', 'Restangular', 'ItemDetailModal', 'Item', function ($scope, $routeParams, Restangular, ItemDetailModal, Item) {
+    .controller('ItemListCtrl', ['$scope', '$routeParams', 'ItemDetailModal', 'Item', function ($scope, $routeParams, ItemDetailModal, Item) {
 
         if ($routeParams.searchTerm) {
             $scope.searchTerm = $routeParams.searchTerm;
 
 			Item.searchList($scope.searchTerm).then(function (data) {
-                $scope.items = data.results;
+                $scope.items = data.data.results;
             });
         } else {
 	        Item.getList().then(function (data) {
-		        $scope.items = data.results;
+		        $scope.items = data.data.results;
 	        });
         }
 
         $scope.openDetailModal = function (idx) {
-            ItemDetailModal.open($scope.items[idx]['id']);
+            ItemDetailModal.open($scope.items[idx]);
         };
 
     }]);
