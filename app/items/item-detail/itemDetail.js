@@ -2,13 +2,6 @@
 
 angular.module('myApp.itemDetail', ['ngRoute', 'ui.bootstrap'])
 
-    //.config(['$routeProvider', function ($routeProvider) {
-    //    $routeProvider.when('/itemDetail/:itemId', {
-    //        templateUrl: 'items/item-detail/item-detail.html',
-    //        controller: 'ItemDetailCtrl'
-    //    });
-    //}])
-
     .service('ItemDetailModal', ['$modal', function ($modal) {
         return {
             open: function (item) {
@@ -16,7 +9,7 @@ angular.module('myApp.itemDetail', ['ngRoute', 'ui.bootstrap'])
                     templateUrl: 'items/item-detail/item-detail.html',
                     controller: 'ItemDetailModalCtrl',
                     resolve: {
-                        itm: function () {
+                        item: function () {
                             return item;
                         }
                     }
@@ -25,15 +18,22 @@ angular.module('myApp.itemDetail', ['ngRoute', 'ui.bootstrap'])
         };
     }])
 
-    //.controller('ItemDetailCtrl', ['$scope','$routeParams', 'Restangular', function ($scope, $routeParams, Restangular) {
-    //    $scope.itemId = $routeParams.itemId;
-    //    Restangular.one('items_detail', $scope.itemId).customGET().then(function (item) {
-    //        $scope.item = item;
-    //    });
-    //
-    //}])
+    .controller('ItemDetailModalCtrl', ['$scope', 'item', 'Restangular', function ($scope, item, Restangular) {
 
-    .controller('ItemDetailModalCtrl', ['$scope', 'itm', function ($scope, itm) {
-        $scope.item = itm
+        Restangular.one('items/', item).customGET().then(function (data) {
+            $scope.item = data;
+        });
+
+        //A Quantity of 0 here will effectively delete the item from your current order.
+        //Also, if the user is not logged in, they won't be able to add items to an order.
+        $scope.addItem = function (item, quantity) {
+            Restangular.one('cart/update/').customPUT({"items":[item.id], "quantity":[quantity], 'increment': true}).then(function () {
+                alert("Item added to cart!");
+            }, function (error) {
+                alert("There was an error adding your item"); //TODO add a decent error alert here too
+            })
+        };
+
+        //TODO add cancel, update and place current order functionality (need to be able to view the current cart)
 
     }]);

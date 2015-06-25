@@ -4,6 +4,8 @@
 angular.module('myApp', [
 
     'ngRoute',
+    'myApp.cart',
+    'myApp.orders.checkout',
     'myApp.auth',
     'myApp.auth.login',
     'myApp.auth.logout',
@@ -12,7 +14,6 @@ angular.module('myApp', [
     'myApp.orderDetail',
     'myApp.adminDashboard',
     'myApp.orderList',
-    'myApp.userList',
     'myApp.userDetail',
     'myApp.view1',
     'myApp.view2',

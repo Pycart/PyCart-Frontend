@@ -9,7 +9,7 @@ angular.module('myApp.userDetail', ['ngRoute'])
 
     .controller('UserDetailCtrl', ['$scope','$routeParams', 'Restangular', function($scope, $routeParams, Restangular) {
         $scope.userId = $routeParams.userId;
-        Restangular.one('user_dashboard', $scope.userId).customGET().then(function(user) {
+        Restangular.one('user/user_dashboard', $scope.userId).customGET().then(function(user) {
             $scope.user = user;
         });
 
@@ -24,7 +24,7 @@ angular.module('myApp.userDetail', ['ngRoute'])
 
 
         $scope.updateUser = function () {
-            Restangular.one('user_dashboard', $scope.userId).customPUT($scope.user).then(function(user) {
+            Restangular.one('user/user_dashboard', $scope.userId).customPUT($scope.user).then(function(user) {
                 $scope.user = user;
                 $scope.form = false;
             })

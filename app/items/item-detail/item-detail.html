@@ -1,11 +1,14 @@
-<h1 ng-app="myApp.itemDetail" ng-controller="ItemDetailCtrl">{{ item.name }}</h1>
+<h1 ng-app="myApp.itemDetail">{{ item.name }}</h1>
 
-<div>
-    <p>{{ item.description }}</p>
-    <p>{{ item.weight }}</p>
-    <p>{{ item.price }}</p>
-    <p>{{ item.option.name }}</p>
+<!--Have a way to display all of the different variants-->
+<div class="modal-content">
+    <h3>Description: </h3><p>{{ item.description }}</p>
+    <h3>Price: </h3><p>${{ item.price }}</p>
+    <h3>Weight: </h3><p>{{ item.weight }}</p>
+    <h3>Tags: </h3>
     <div ng-repeat="tag in item.tags track by $index">
         {{tag}}
     </div>
+    <input ng-model="quantity" class="form-control" placeholder="Quantity" type="number" min="1" name="quantity"/>
+    <button ng-click="addItem(item, quantity)" class="btn btn-info">Add {{ item.name }} to Cart</button>
 </div>

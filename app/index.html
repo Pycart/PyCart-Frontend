@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
         <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/toastr/toastr.min.css">
         <link rel="stylesheet" href="app.css">
         <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
@@ -33,6 +34,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left dropdown">
                     <a href="#/itemList/"><li>Items</li></a>
+                    <a href="#/cart/"><li>Cart</li></a>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <form class="navbar-form" role="search">
@@ -42,7 +44,7 @@
                         <button ng-click="search(searchTerm)" type="submit" class="btn btn-default">Submit</button>
                     </form>
                     <!--This is the place for Parentless tags to be displayed. It will outline the categories that will display in the menu bar-->
-                    <li ng-if="!user.email"><a ng-click='login()'>Login</a></li>
+                    <li ng-if="!user.email"><a ng-click='login()'>Login or Signup</a></li>
                     <li ng-if="user.email"><a ng-click='logout()'>Logout</a></li>
                     <li ng-if="user.is_staff"><a href="#/admin">Admin</a></li>
                     <li ng-if="user.email"><a href="#/userDetail/{{ user.id }}">User Info</a></li>
@@ -74,8 +76,9 @@
     <script src="bower_components/lodash/lodash.min.js"></script>
     <script src="bower_components/restangular/dist/restangular.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components/toastr/toastr.min.js"></script>
     <script src="app.js"></script>
     <script src="admin_dashboard/admin_dashboard.js"></script>
     <script src="auth/auth.js"></script>
@@ -83,10 +86,10 @@
     <script src="auth/logout/logout.js"></script>
     <script src="items/item-list/itemList.js"></script>
     <script src="items/item-detail/itemDetail.js"></script>
-    <script src="order/order_list/orderList.js"></script>
-    <script src="user/user_list/userList.js"></script>
     <script src="user/user_detail/userDetail.js"></script>
-    <script src="order/order_list/orderList.js"></script>
+    <script src="orders/cart/cart.js"></script>
+    <script src="orders/checkout/checkout.js"></script>
+    <script src="orders/order_list/orderList.js"></script>
     <script src="orders/order_detail/order-detail.js"></script>
     <script src="save_cards/save_cards_list/saveCardsList.js"></script>
     <script src="save_cards/save_cards_detail/saveCardsDetail.js"></script>
