@@ -9,19 +9,15 @@ angular.module('myApp', [
     'myApp.auth',
     'myApp.auth.login',
     'myApp.auth.logout',
-    'myApp.itemDetail',
-    'myApp.itemList',
+    'myApp.item',
     'myApp.orderDetail',
     'myApp.adminDashboard',
     'myApp.orderList',
     'myApp.userDetail',
-    'myApp.view1',
-    'myApp.view2',
     'myApp.version',
     'restangular',
     'ui.bootstrap',
     'myApp.stock_records_view',
-    'ui.bootstrap',
     'myApp.saveCardsDetail',
     'myApp.saveCardsList'
 ])
@@ -30,6 +26,8 @@ angular.module('myApp', [
         RestangularProvider.setBaseUrl('http://localhost:8001'); // for the purpose of user setup, this will run on localhost of their machine
         RestangularProvider.setRequestSuffix('/');
     }])
+
+	.value('BaseUrl', 'http://localhost:8001/')
 
     .controller('AppCtrl', ['$scope', '$location', 'Restangular', 'UserService', 'RequireLogin',
         function ($scope, $location, Restangular, UserService) {

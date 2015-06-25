@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.itemList', ['ngRoute'])
+angular.module('myApp.item')
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/itemList', {
@@ -12,23 +12,22 @@ angular.module('myApp.itemList', ['ngRoute'])
         });
     }])
 
-    .controller('ItemListCtrl', ['$scope', '$routeParams', 'Restangular', 'ItemDetailModal', function ($scope, $routeParams, Restangular, ItemDetailModal) {
-
-        $scope.itemId = $routeParams.itemId;
+    .controller('ItemListCtrl', ['$scope', '$routeParams', 'ItemDetailModal', 'Item', function ($scope, $routeParams, ItemDetailModal, Item) {
 
         if ($routeParams.searchTerm) {
             $scope.searchTerm = $routeParams.searchTerm;
-            Restangular.all('items/search/?search=' + $scope.searchTerm).customGET().then(function (data) {
-                $scope.items = data.results;
+
+			Item.searchList($scope.searchTerm).then(function (data) {
+                $scope.items = data.data.results;
             });
         } else {
-            Restangular.all('items/').customGET().then(function (data) {
-                $scope.items = data.results;
-            });
+	        Item.getList().then(function (data) {
+		        $scope.items = data.data.results;
+	        });
         }
 
         $scope.openDetailModal = function (idx) {
-            ItemDetailModal.open($scope.items[idx]['id']);
+            ItemDetailModal.open($scope.items[idx]);
         };
 
     }]);
