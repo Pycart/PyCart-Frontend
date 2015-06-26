@@ -10,6 +10,8 @@ angular.module('myApp', [
     'myApp.auth.login',
     'myApp.auth.logout',
     'myApp.item',
+    'myApp.itemDetail',
+    'myApp.itemList',
     'myApp.orderDetail',
     'myApp.adminDashboard',
     'myApp.orderList',
