@@ -3,7 +3,7 @@
 angular.module('myApp.cart', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/cart', {
+        $routeProvider.when('/dashboard/cart', {
             templateUrl: 'orders/cart/cart.html',
             controller: 'CartCtrl'
         });

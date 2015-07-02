@@ -34,7 +34,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left dropdown">
                     <a href="#/itemList/"><li>Items</li></a>
-                    <a href="#/cart/"><li>Cart</li></a>
+                    <a href="#/dashboard/cart/" ng-if="user.id"><li>Cart</li></a>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <form class="navbar-form" role="search">

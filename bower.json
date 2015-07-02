@@ -13,6 +13,7 @@
     "html5-boilerplate": "~4.3.0",
     "restangular": "~1.5.1",
     "bootstrap": "~3.3.4",
-    "angular-bootstrap": "~0.13.0"
+    "angular-bootstrap": "~0.13.0",
+    "toastr": "~2.1.1"
   }
 }
